@@ -2,8 +2,8 @@ if __name__ == "__main__" :
     from model import *
     quit = False
     iterations = 0
-
-    nn = load()
+    
+    nn = init_model()
 
     while not quit:
         print("1. Train model")
@@ -15,8 +15,7 @@ if __name__ == "__main__" :
             print("Enter number of iterations: ")
             iterations = int(input())
             print("Training model...")
-            gradient_descent(X_train, Y_train, 0.10, iterations)
-            quit = True
+            gradient_descent(X_train, Y_train, 0.10, iterations, nn)
             iterations = 0
         elif choice == 2:
             print("how many tests")
@@ -25,7 +24,6 @@ if __name__ == "__main__" :
             for i in range(iterations):
                 test_prediction(i, nn)
 
-            quit = True
         elif choice == 3:
             save(nn)
             quit = True
