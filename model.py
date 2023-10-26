@@ -30,6 +30,7 @@ class NN(object):
 def ReLU(Z):
     return np.maximum(Z, 0)
 
+
 def softmax(Z):
     A = np.exp(Z) / sum(np.exp(Z))
     return A
@@ -123,11 +124,9 @@ def init_model()-> NN:
     return nn
 
 if __name__ == "__main__":
-    nn = gradient_descent(X_train, Y_train, 0.10, 30, init_model())
-    for i in range(20):
+    #uncoment to train model
+    nn = gradient_descent(X_train, Y_train, 0.1, 0, init_model())
+    for i in range(10):
         test_prediction(i, nn)
 
     save(nn)
-
-
-
