@@ -102,16 +102,17 @@ def load() -> NN:
         loaded_model = pickle.load(file)
     return loaded_model
 
-def test_prediction(index, nn : NN):
+def test_prediction(index, nn: NN):
     current_image = X_train[:, index, None]
     prediction = make_predictions(X_train[:, index, None], nn)
     label = Y_train[index]
-    print("Prediction: ", prediction)
-    print("Label: ", label)
+    print("Prediction:", prediction)
+    print("Label:", label)
     
     current_image = current_image.reshape((28, 28)) * 255
-    plt.gray()
     plt.imshow(current_image, interpolation='nearest')
+    plt.axis('off')
+    plt.title(f"Prediction: {prediction}")
     plt.show()
 
 def init_model()-> NN:
